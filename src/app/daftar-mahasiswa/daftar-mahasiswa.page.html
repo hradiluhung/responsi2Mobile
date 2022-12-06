@@ -1,0 +1,32 @@
+<ion-header
+  ><ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onCancel()"> Cancel </ion-button>
+    </ion-buttons>
+    <ion-title>Daftar Mahasiswa Baru</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onDaftarMahasiswa(form)">
+    <div class="daftar__container">
+      <input
+        class="daftar__input"
+        name="name"
+        type="text"
+        placeholder="Nama"
+        [(ngModel)]="nama"
+        required
+      />
+      <input
+        class="daftar__input"
+        name="daerah"
+        type="text"
+        placeholder="Daerah"
+        [(ngModel)]="daerah"
+        required
+      />
+      <ion-button type="submit" expand="block">Daftar</ion-button>
+    </div>
+  </form>
+</ion-content>

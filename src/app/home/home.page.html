@@ -1,20 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Daftar Mahasiswa </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Pendaftaran Mahasiswa</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="logout()"> Logout </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-content>
+    <ion-button class="home__button" (click)="daftarMahasiswa()" fill="outline"
+      >Daftar</ion-button
+    >
+
+    <div class="home__card">
+      <h2 class="home__card-title">Mahasiswa Aktif</h2>
+      <div class="home__card-datas" *ngFor="let data of mahasiswaAktif">
+        <div class="home__card-detail">
+          <div class="home__card-data">{{data.nama}}</div>
+          <div class="home__card-data">{{data.daerah}}</div>
+        </div>
+        <ion-button size="small" (click)="nonAktifkanMahasiswa(data.id)"
+          >Nonaktifkan</ion-button
+        >
+      </div>
+    </div>
+
+    <div class="home__card">
+      <h2 class="home__card-title">Mahasiswa Tidak Aktif</h2>
+      <div class="home__card-datas" *ngFor="let data of mahasiswaTidakAktif">
+        <div class="home__card-detail">
+          <div class="home__card-data">{{data.nama}}</div>
+          <div class="home__card-data">{{data.daerah}}</div>
+        </div>
+        <ion-button
+          size="small"
+          (click)="hapusMahasiswa(data.id)"
+          color="danger"
+          >Delete</ion-button
+        >
+      </div>
+    </div>
+  </ion-content>
 </ion-content>
